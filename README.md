@@ -1,2 +1,2 @@
-# FormacaoNodeJs_SequelizeAvancado
-ORM com Node.js: avançando nas funcionalidades do Sequelize
+# FormacaoNodeJs_SequelizeSQLite
+ORM com Node.js: desenvolvendo uma API com Sequelize e SQLite
