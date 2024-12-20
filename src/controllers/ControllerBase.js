@@ -6,9 +6,9 @@ class ControllerBase {
 	async getAll(req, res) {
 		try {
 			const entities = await this.service.getAll();
-			res.status(200).json(entities);
+			return res.status(200).json(entities);
 		} catch (error) {
-			// lançar erro
+			return res.status(500).json({ erro: error.message });
 		}
 	}
 
@@ -18,9 +18,9 @@ class ControllerBase {
 		try {
 			const entity = await this.service.getById(Number(id));
 
-			res.status(200).json(entity);
+			return res.status(200).json(entity);
 		} catch (error) {
-			//error
+			return res.status(500).json({ erro: error.message });
 		}
 	}
 
@@ -30,9 +30,9 @@ class ControllerBase {
 		try {
 			const model = await this.service.post(entity);
 
-			res.status(201).json(model);
+			return res.status(201).json(model);
 		} catch (error) {
-			//error
+			return res.status(500).json({ erro: error.message });
 		}
 	}
 
@@ -50,7 +50,7 @@ class ControllerBase {
 				res.status(400).send(`Erro ao atualizar objeto ${id}`);
 			}
 		} catch (error) {
-			//error
+			return res.status(500).json({ erro: error.message });
 		}
 	}
 
@@ -66,7 +66,7 @@ class ControllerBase {
 				res.status(400).json({ message: `Erro ao deletar registro ${id}` });
 			}
 		} catch (error) {
-			//error
+			return res.status(500).json({ erro: error.message });
 		}
 	}
 }

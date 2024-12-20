@@ -13,9 +13,9 @@ class PessoaController extends ControllerBase {
 			const { estudanteId } = req.params;
 			const listaAulasMatriculadas = await pessoaServices.getAulasMatriculadas(Number(estudanteId));
 
-			res.status(200).json(listaAulasMatriculadas);
+			return res.status(200).json(listaAulasMatriculadas);
 		} catch (error) {
-			//error
+			return res.status(500).json({ erro: error.message });
 		}
 	}
 }
