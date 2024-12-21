@@ -12,6 +12,13 @@ class PessoaServices extends Services {
 		return listaAulasMatriculadas;
 	}
 
+	async getAllMatriculas(id) {
+		const estudante = await super.getById(id);
+		const listaMatriculas = await estudante.getAllMatriculas();
+
+		return listaMatriculas;
+	}
+
 	async getAllByScope() {
 		const entities = await super.getAllByScope('getAll');
 		return entities;

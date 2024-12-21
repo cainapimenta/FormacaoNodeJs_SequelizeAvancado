@@ -19,6 +19,17 @@ class PessoaController extends ControllerBase {
 		}
 	}
 
+	async getAllMatriculas(req, res) {
+		try {
+			const { estudanteId } = req.params;
+			const listaMatriculas = await pessoaServices.getAllMatriculas(Number(estudanteId));
+
+			return res.status(200).json(listaMatriculas);
+		} catch (error) {
+			return res.status(400).json({ erro: error.message });
+		}
+	}
+
 	async getAllByScope(req, res) {
 		try {
 			const models = await pessoaServices.getAllByScope();

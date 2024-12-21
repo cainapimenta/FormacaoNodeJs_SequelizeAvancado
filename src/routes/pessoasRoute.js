@@ -14,6 +14,7 @@ router.get('/pessoas', (req, res) => pessoaController.getAll(req, res))
 	.put('/pessoas/:id', (req, res) => pessoaController.update(req, res))
 	.delete('/pessoas/:id', (req, res) => pessoaController.delete(req, res))
 	.get('/pessoas/:estudanteId/matriculas', (req, res) => pessoaController.getAulasMatriculadas(req, res))
+	.get('/pessoas/:estudanteId/matriculas/all', (req, res) => pessoaController.getAllMatriculas(req, res))
 	.post('/pessoas/:estudanteId/matriculas', (req, res) => matriculaController.post(req, res));
 
 module.exports = router;
