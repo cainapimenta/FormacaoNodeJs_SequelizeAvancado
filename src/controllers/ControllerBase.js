@@ -1,3 +1,5 @@
+const stringHelper = require('../utils/stringHelper.js');
+
 class ControllerBase {
 	constructor(service) {
 		this.service = service;
@@ -26,9 +28,11 @@ class ControllerBase {
 
 	async getOne(req, res) {
 		try {
-			// const { ...params } = req.params;
-			// const entity = await this.service.getById(params);
-			// return res.status(200).json(entity);
+			const { ...params } = req.params;
+			const where = stringHelper(params);
+
+			const entity = await this.service.getOne(where);
+			return res.status(200).json(entity);
 		} catch (error) {
 			return res.status(400).json({ erro: error.message });
 		}
