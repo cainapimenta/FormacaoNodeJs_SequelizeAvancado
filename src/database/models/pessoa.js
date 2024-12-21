@@ -30,6 +30,11 @@ module.exports = (sequelize, DataTypes) => {
 			where: {
 				ativo: true
 			}
+		},
+		scopes: {
+			getAll: {
+				where: {}
+			}
 		}
 	});
 	return Pessoa;

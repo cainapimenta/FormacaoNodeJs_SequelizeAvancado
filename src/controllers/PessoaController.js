@@ -18,6 +18,15 @@ class PessoaController extends ControllerBase {
 			return res.status(500).json({ erro: error.message });
 		}
 	}
+
+	async getAllByScope(req, res) {
+		try {
+			const models = await pessoaServices.getAllByScope();
+			return res.status(200).json(models);
+		} catch (error) {
+			return res.status(500).json({ erro: error.message });
+		}
+	}
 }
 
 module.exports = PessoaController;

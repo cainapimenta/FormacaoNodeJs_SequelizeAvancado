@@ -6,63 +6,50 @@ class Services {
 	}
 
 	async getAll() {
-		try {
-			return dataSource[this.modelName].findAll();
-		} catch (error) {
-			// lançar erro
-		}
+		return dataSource[this.modelName].findAll();
+	}
+
+	async getAllByScope(scope) {
+		return dataSource[this.modelName].scope(scope).findAll();
 	}
 
 	async getById(id) {
-		try {
-			const entite = dataSource[this.modelName].findByPk(id);
+		const entite = dataSource[this.modelName].findByPk(id);
 
-			return entite;
-		} catch (error) {
-			//error
-		}
+		return entite;
+
 	}
 
 	async post(entity) {
-		try {
-			const result = dataSource[this.modelName].create(entity);
+		const result = dataSource[this.modelName].create(entity);
 
-			return result;
-		} catch (error) {
-			//error
-		}
+		return result;
+
 	}
 
 	async update(entity, id) {
-		try {
-			const listReturn = dataSource[this.modelName].update(entity, {
-				where: {
-					id: id
-				}
-			});
-
-			if (listReturn[0] === 0) {
-				return false;
-			} else {
-				return true;
+		const listReturn = dataSource[this.modelName].update(entity, {
+			where: {
+				id: id
 			}
-		} catch (error) {
-			//error
+		});
+
+		if (listReturn[0] === 0) {
+			return false;
+		} else {
+			return true;
 		}
+
 	}
 
 	async delete(id) {
-		try {
-			const isDeleted = dataSource[this.modelName].destroy({ where: { id: id } });
+		const isDeleted = dataSource[this.modelName].destroy({ where: { id: id } });
 
-			if (isDeleted === 0) {
-				return false;
-			}
-			else {
-				return true;
-			}
-		} catch (error) {
-			//error	
+		if (isDeleted === 0) {
+			return false;
+		}
+		else {
+			return true;
 		}
 	}
 }
