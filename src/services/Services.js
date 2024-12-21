@@ -17,14 +17,18 @@ class Services {
 		const entite = dataSource[this.modelName].findByPk(id);
 
 		return entite;
+	}
 
+	async getOne(where) {
+		const entity = dataSource[this.modelName].findOne({ where: { ...where } });
+
+		return entity;
 	}
 
 	async post(entity) {
 		const result = dataSource[this.modelName].create(entity);
 
 		return result;
-
 	}
 
 	async update(entity, id) {
