@@ -31,10 +31,10 @@ class Services {
 		return result;
 	}
 
-	async update(entity, id) {
+	async update(entity, where) {
 		const listReturn = dataSource[this.modelName].update(entity, {
 			where: {
-				id: id
+				...where
 			}
 		});
 

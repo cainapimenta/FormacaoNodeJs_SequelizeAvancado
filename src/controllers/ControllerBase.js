@@ -51,17 +51,18 @@ class ControllerBase {
 	}
 
 	async update(req, res) {
-		const { id } = req.params;
-		const model = req.body;
-
 		try {
-			const isUpdate = await this.service.update(model, Number(id));
+			const { ...params } = req.params;
+			const where = stringHelper(params);
+			const model = req.body;
+
+			const isUpdate = await this.service.update(model, where);
 
 			if (isUpdate) {
 				res.status(204).send();
 			}
 			else {
-				res.status(400).send(`Erro ao atualizar objeto ${id}`);
+				res.status(400).send('Erro ao atualizar objeto');
 			}
 		} catch (error) {
 			return res.status(500).json({ erro: error.message });

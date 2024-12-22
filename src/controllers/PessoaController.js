@@ -10,8 +10,8 @@ class PessoaController extends ControllerBase {
 
 	async getAulasMatriculadas(req, res) {
 		try {
-			const { estudanteId } = req.params;
-			const listaAulasMatriculadas = await pessoaServices.getAulasMatriculadas(Number(estudanteId));
+			const { estudante_id } = req.params;
+			const listaAulasMatriculadas = await pessoaServices.getAulasMatriculadas(Number(estudante_id));
 
 			return res.status(200).json(listaAulasMatriculadas);
 		} catch (error) {
@@ -21,8 +21,8 @@ class PessoaController extends ControllerBase {
 
 	async getAllMatriculas(req, res) {
 		try {
-			const { estudanteId } = req.params;
-			const listaMatriculas = await pessoaServices.getAllMatriculas(Number(estudanteId));
+			const { estudante_id } = req.params;
+			const listaMatriculas = await pessoaServices.getAllMatriculas(Number(estudante_id));
 
 			return res.status(200).json(listaMatriculas);
 		} catch (error) {
