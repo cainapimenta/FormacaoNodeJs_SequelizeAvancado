@@ -5,12 +5,19 @@ class Services {
 		this.modelName = modelName;
 	}
 
-	async getAll() {
-		return dataSource[this.modelName].findAll();
+	async getAll(where = {}) {
+		return dataSource[this.modelName].findAll({ where: { ...where } });
 	}
 
 	async getAllByScope(scope) {
 		return dataSource[this.modelName].scope(scope).findAll();
+	}
+
+	async getAndCount(where) {
+		return dataSource[this.modelName].findAndCountAll({
+			where: { ...where },
+			order: [['id', 'DESC']]
+		});
 	}
 
 	async getById(id) {
