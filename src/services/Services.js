@@ -13,11 +13,8 @@ class Services {
 		return dataSource[this.modelName].scope(scope).findAll();
 	}
 
-	async getAndCount(where) {
-		return dataSource[this.modelName].findAndCountAll({
-			where: { ...where },
-			order: [['id', 'DESC']]
-		});
+	async getAndCount(options = {}) {
+		return dataSource[this.modelName].findAndCountAll({ ...options });
 	}
 
 	async getById(id) {
