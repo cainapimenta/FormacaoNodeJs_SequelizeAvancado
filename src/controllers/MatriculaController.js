@@ -1,8 +1,6 @@
-const sequelize = require('sequelize');
-
+const Sequelize = require('sequelize');
 const ControllerBase = require('./ControllerBase.js');
 const MatriculaServices = require('../services/MatriculaServices.js');
-const { Sequelize } = require('../database/models/index.js');
 
 const matriculaServices = new MatriculaServices();
 
