@@ -35,11 +35,12 @@ class Services {
 		return result;
 	}
 
-	async update(entity, where) {
+	async update(entity, where, transaction = {}) {
 		const listReturn = dataSource[this.modelName].update(entity, {
 			where: {
 				...where
-			}
+			},
+			transaction: transaction
 		});
 
 		if (listReturn[0] === 0) {
